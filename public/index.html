@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot WebSockets</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; font-size: 14px; }
+        #chatbox { width: 80%; height: 300px; border: 1px solid #ccc; text-align: left; padding: 10px; overflow-y: auto; margin: 10px auto; }
+        #chatbox h1, #chatbox h2, #chatbox h3 { font-size: 14px; font-weight: bold; }
+        input, button { width: 80%; padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Chatbot en Tiempo Real</h2>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
+    <button onclick="sendMessage()">Enviar</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
