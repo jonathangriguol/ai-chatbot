@@ -4,11 +4,13 @@ const { OpenAI } = require("openai");
 const { WebSocketServer } = require("ws");
 const cors = require("cors");
 const { v4: uuidv4 } = require('uuid');
+const ControladorDeChat = require("./ControladorDeChat");
+const Asistente = require("./Asistente");
 
 const app = express();
 const PORT = 3000;
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: 'process.env.OPENAI_API_KEY' });
 
 const ASSISTANT_ID = "asst_A8w6kRTELYi9flRMFLjvkPo2";
 
@@ -152,5 +154,11 @@ function generarLinkCheckout(productos) {
     return `${mpagoUrl}?${uuid}`;
 }
 
-app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+
+    let chat = new ControladorDeChat(new Asistente(process.env.OPENAI_API_KEY, ASSISTANT_ID));
+    chat.iniciar();
+});
+
 console.log("WebSocket en ws://localhost:8080");

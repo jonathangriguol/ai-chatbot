@@ -1,4 +1,4 @@
-const ws = new WebSocket("ws://localhost:8080");
+const ws = new WebSocket("ws://localhost:8081");
 
 ws.onopen = () => console.log("Conectado al servidor WebSocket");
 ws.onerror = (error) => console.error("Error en WebSocket:", error);
