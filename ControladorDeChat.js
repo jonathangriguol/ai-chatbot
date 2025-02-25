@@ -1,6 +1,6 @@
 const { WebSocketServer } = require("ws");
 
-const puerto = 8081;
+const puerto = 8080;
 const CLIENTE_CONECTADO = 'connection';
 const MENSAJE_RECIBIDO = 'message';
 const CERRAR_CONEXION = 'close';
