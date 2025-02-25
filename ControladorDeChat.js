@@ -3,6 +3,7 @@ const { WebSocketServer } = require("ws");
 const puerto = 8081;
 const CLIENTE_CONECTADO = 'connection';
 const MENSAJE_RECIBIDO = 'message';
+const CERRAR_CONEXION = 'close';
 const MENSAJE_FIN = "[FIN]";
 
 class ControladorDeChat {
@@ -19,6 +20,7 @@ class ControladorDeChat {
     alConectarseUnCliente(webSocket) {
         console.log("[Controlador de chat] Cliente conectado");
         webSocket.on(MENSAJE_RECIBIDO, (datos) => this.alRecibirUnMensaje(webSocket, datos));
+        webSocket.on(CERRAR_CONEXION, () => this.alCerrarConexion(webSocket));
     }
 
     alRecibirUnMensaje = async (webSocket, datos) => {
@@ -30,6 +32,11 @@ class ControladorDeChat {
         const respuesta = await this.asistente.atender(chat, mensaje);
         webSocket.send(respuesta);
         this.finalizar(webSocket);
+    }
+
+    alCerrarConexion(webSocket) {
+        console.log("[Controlador de chat] Cliente desconectado, eliminando su conversación...");
+        this.chats.delete(webSocket);
     }
 
     async obtenerOCrearChat(webSocket) {
