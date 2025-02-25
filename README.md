@@ -45,8 +45,6 @@ OPENAI_API_KEY=tu_clave_aqui
 ASSISTANT_ID=id-asistente
 ```
 
-> **NOTA:** También debes reemplazar `asst_XXXXXXXXXXXXXXXXX` en `server.js` con el ID de tu asistente de OpenAI.
-
 ### 4️⃣ Ejecutar el servidor
 
 ```sh
